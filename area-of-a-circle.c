@@ -37,13 +37,13 @@ int main() {
     print_centered("*                                                *\n");
     print_centered("**************************************************\n");
 
-printf("\033[1;31m");
-print_centered("Presented by:\n");
-print_centered("Sadi Mahmud Sajid / Devildon\n");
-print_centered("(devil㉿kali)\n");
-print_centered("Contact: 01890731620\n");
-print_centered("Email: sadimahmudsajid@gmail.com\n");
-printf("\033[0m\n");
+    printf("\033[1;31m");
+    print_centered("Presented by:\n");
+    print_centered("Sadi Mahmud Sajid / Devildon\n");
+    print_centered("(devil㉿kali)\n");
+    print_centered("Contact: 01890731620\n");
+    print_centered("Email: sadimahmudsajid@gmail.com\n");
+    printf("\033[0m\n");
 
     print_centered("\033[1;32m        >>>C program to calculate the area of a circle<<<\n");
 
