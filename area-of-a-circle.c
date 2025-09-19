@@ -3,6 +3,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <string.h>
+#include <math.h> // For M_PI
 
 void print_centered(const char *fmt, ...) {
     struct winsize w;
@@ -17,48 +18,42 @@ void print_centered(const char *fmt, ...) {
 
     int len = strlen(buffer);
     int padding = (term_width - len) / 2;
+    if (padding < 0) padding = 0;
 
-    for (int i = 0; i < padding; ++i) {
-        putchar(' ');
-    }
+    for (int i = 0; i < padding; ++i) putchar(' ');
     printf("%s", buffer);
 }
 
+void clear_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 int main() {
-    printf("\033[1m");
-    printf("\033[36m");
     printf("\033[1;36m");
     print_centered("**************************************************\n");
     print_centered("*                                                *\n");
     print_centered("*          Welcome to the Coding World!          *\n");
     print_centered("*                                                *\n");
-    print_centered("**************************************************\n");
-    printf("\n");
+    print_centered("**************************************************\n\n");
 
     printf("\033[1;31m");
-    print_centered("Presented by:\n");
-    print_centered("Sadi Mahmud Sajid / Devildon\n");
-    print_centered("(devil㉿kali)\n");
-    print_centered("Contact Number:01890731620\n");
-    print_centered("Gmail:sadimahmudsajid@gmail.com\n");
-    printf("\033[0m");
-    printf("\033[0m");
-    printf("\033[0m");
-    printf("\n");
+    print_centered("Presented by:\nSadi Mahmud Sajid / Devildon\n(devil㉿kali)\nContact: 01890731620\nEmail: sadimahmudsajid@gmail.com\n");
+    printf("\033[0m\n");
+
     print_centered("\033[1;32m        >>>C program to calculate the area of a circle<<<\n");
 
     char choice;
     do {
-        float pi = 3.1416;
-        float r;
-        float sum;
+        float r, area;
         int input_check;
 
+        // Input loop
         do {
             printf("\n");
             print_centered("\033[1;33m     Enter the value of r: ");
             input_check = scanf("%f", &r);
-            while(getchar() != '\n'); // Clear the input buffer
+            clear_input_buffer();
 
             if (input_check != 1) {
                 printf("\n");
@@ -69,19 +64,22 @@ int main() {
             }
         } while (input_check != 1 || r <= 0);
 
-        sum = pi * r * r;
-        print_centered("\033[1;33m    The area is %f\n", sum);
+        area = M_PI * r * r;
+        print_centered("\033[1;33m    The area is %.2f\n", area);
 
         printf("\n");
         print_centered("\033[1;35m       Do you want to calculate another area? (y/n): ");
         scanf(" %c", &choice);
+        clear_input_buffer();
 
         while (choice != 'y' && choice != 'n') {
             printf("\n");
             print_centered("\033[1;31m       Please enter 'y' or 'n': ");
             scanf(" %c", &choice);
+            clear_input_buffer();
         }
     } while (choice == 'y');
 
+    printf("\033[0m"); // Ensure color reset at end
     return 0;
 }
