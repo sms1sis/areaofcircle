@@ -35,7 +35,7 @@ int main() {
     print_centered("*                                                *\n");
     print_centered("*          Welcome to the Coding World!          *\n");
     print_centered("*                                                *\n");
-    print_centered("**************************************************\n\n");
+    print_centered("**************************************************\n");
 
     printf("\033[1;31m");
     print_centered("Presented by:\nSadi Mahmud Sajid / Devildon\n(devil㉿kali)\nContact: 01890731620\nEmail: sadimahmudsajid@gmail.com\n");
