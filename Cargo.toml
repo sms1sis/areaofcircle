@@ -1,0 +1,8 @@
+[package]
+name = "areaofcircle_rust-aarch64"
+version = "5.0.0"
+edition = "2024"
+
+[dependencies]
+terminal_size = "0.4"
+regex = "1"
